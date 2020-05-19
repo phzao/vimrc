@@ -8,6 +8,13 @@ Clone this repository on your root
 
 ### Installing
 
+```
+$ rm -R .vim
+```
+
+```
+$ mv vim .vim
+```
 
 ```
 $ mv .vim/.vimrc .
