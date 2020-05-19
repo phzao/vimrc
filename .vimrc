@@ -39,7 +39,7 @@ map <silent> <Leader>d <esc>:call UiToggle()<CR>:bd<CR>:call UiToggle()<CR>
 
 " set textwidth=8
 "colorscheme jellybeans afterglow meta5
-colorscheme afterglow
+colorscheme jellybeans
 syntax on
 set guioptions-=m
 set guioptions=ac
