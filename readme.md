@@ -20,7 +20,16 @@ $ mv vim .vim
 $ mv .vim/.vimrc .
 ```
 
-Install ctags
+### Starting
+Open Vim, then Ctrl + c and type
+
+```
+:PlugInstall
+```
+
+That will install all plugins
+
+### Install ctags
 
 ```
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -47,4 +56,9 @@ $ ctagJS
 
 don't forget of add on .gitignore the folder:
 
+```
 tag
+```
+
+
+That's all folks!
