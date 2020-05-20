@@ -4,16 +4,20 @@ Let's do that.
 
 ## Getting Started
 
-Clone this repository on your root
+Clone this repository on your root, rename it, install PlugInstall, ctags and ready.
 
 ### Installing
 
 ```
-$ rm -R .vim
+$ git clone https://github.com/phzao/vimrc.git
 ```
 
 ```
-$ mv vim .vim
+$ rm -R .vim .vimrc
+```
+
+```
+$ mv vimrc .vim
 ```
 
 ```
