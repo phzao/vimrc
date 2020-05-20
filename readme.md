@@ -33,7 +33,7 @@ Open Vim, then Ctrl + c and type
 
 That will install all plugins
 
-### Install ctags
+### Install ctags [for mac users]
 
 ```
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -42,6 +42,33 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 ```
 brew install ctags-exuberant
 ```
+
+
+### Install ctags [for others linux]
+
+I don't try this, only copy fron askubuntu.com:
+
+
+`````
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+./autogen.sh 
+./configure
+make
+sudo make install
+`````
+
+Or  on ubuntu distro, 19.04:
+
+``````
+sudo apt install universal-ctags
+``````
+
+or
+
+`````
+sudo snap install universal-ctags
+`````
 
 ## Add alias *optional
 
