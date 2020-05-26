@@ -12,11 +12,14 @@ set showcmd
 set showmode
 set wildmenu
 
+set cmdheight=2
 set ch=2
 set vb
 set backspace=2
 set backspace=indent,eol,start
 set hlsearch
+
+let g:loaded_matchit = 1
 
 set tabstop=4
 set shiftwidth=4
@@ -32,6 +35,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'majutsushi/tagbar'
 
+Plug 'Shougo/deoplete.nvim'
+
 Plug 'vim-php/tagbar-phpctags.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
@@ -43,6 +48,10 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 Plug 'alvan/vim-closetag'
+
+Plug 'wellle/targets.vim'
+
+Plug 'Shougo/neocomplete.vim'
 
 Plug 'dense-analysis/ale'
 
@@ -57,6 +66,22 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'tpope/vim-surround'
+
+Plug 'andymass/vim-matchup'
+
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
+Plug 'puremourning/vimspector'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'mhinz/vim-signify'
+
+Plug 'yggdroot/indentline'
+
+Plug 'vim-scripts/vcscommand.vim'
 
 call plug#end()
 
@@ -79,12 +104,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
@@ -252,3 +273,31 @@ let g:js_file_import_prompt_if_no_tag = 1
 let g:js_file_import_package_first = 0
 let g:js_file_import_omit_semicolon = 0
 set wildignore+=*node_modules/**
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" === COMMENT code
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
