@@ -27,7 +27,6 @@ set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 "config teste
-set number
 set mouse=a
 set backspace=indent,eol,start
 set hlsearch
@@ -101,6 +100,18 @@ call plug#begin('~/.vim/plugged')
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+
+Plug 'Shougo/deoplete.nvim'
+
+Plug 'mxw/vim-jsx'
+
+Plug 'leafgarland/typescript-vim'
+
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
+Plug 'vim-vdebug/vdebug'
+
+Plug 'dbakker/vim-projectroot'
 
 Plug 'andymass/vim-matchup'
 
@@ -576,3 +587,57 @@ let g:closetag_shortcut = '>'
 "
 let g:closetag_close_shortcut = '<leader>>'
 
+
+" === COMMENT code
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+set relativenumber                        
+
+let g:vdebug_options = {
+      \ 'port' : 9008,
+      \ 'server' : '',
+      \ 'path_maps': {
+        \ '/application': '/Users/paulohenriquepachecobotelho/Dev/fractal/siga-api'
+      \ }
+      \}
+
+" PROJECTROOT
+let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git', '.hg', '.svn', '.bzr','_darcs','build.xml']
+
+function! SetupDebug()
+  let g:vdebug_options['path_maps'] = {'/app': call('projectroot#get', a:000)}
+  " Hack to override vdebug options
+  source ~/.vim/plugged/vdebug/plugin/vdebug.vim
+endfunction
+autocmd VimEnter * :call SetupDebug()
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+packadd! vimspector
+
+"JS import
+set tagfunc=jsfileimport#tagfunc
+let g:js_file_import_sort_after_insert = 0
+let g:js_file_import_prompt_if_no_tag = 1
+let g:js_file_import_package_first = 0
+let g:js_file_import_omit_semicolon = 0
+set wildignore+=*node_modules/**
