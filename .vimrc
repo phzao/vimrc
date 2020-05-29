@@ -7,7 +7,9 @@ set history=100
 set scrolloff=8
 set virtualedit=all
 set number
+set nobackup
 set noswapfile
+set noundofile
 set showcmd
 set showmode
 set wildmenu
@@ -148,6 +150,7 @@ function! s:show_documentation()
   endif
 endfunction
 
+let NERDTreeShowHidden=1
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
