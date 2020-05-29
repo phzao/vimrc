@@ -11,6 +11,7 @@ set noswapfile
 set showcmd
 set showmode
 set wildmenu
+set laststatus=2
 
 set cmdheight=2
 set ch=2
@@ -20,14 +21,22 @@ set backspace=indent,eol,start
 set hlsearch
 
 let g:loaded_matchit = 1
-
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
 map <silent> <Leader>d <esc>:call UiToggle()<CR>:bd<CR>:call UiToggle()<CR>
 let g:TailMinusF_Center_Win = 1
-set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{fugitive#statusline()}%=\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{fugitive#statusline()}%=\ [%{mode()}%=]\ %{StatuslineGit()}%=\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
 
 call plug#begin('~/.vim/plugged')
 
@@ -48,6 +57,8 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 Plug 'alvan/vim-closetag'
+
+Plug 'mileszs/ack.vim'
 
 Plug 'wellle/targets.vim'
 
@@ -82,6 +93,10 @@ Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 
 Plug 'vim-scripts/vcscommand.vim'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -135,6 +150,14 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 set buftype=
@@ -199,7 +222,7 @@ let g:lightline = {
     \   'right': [['lineinfo'], ['filetype']]
     \ },
     \ 'component': {
-    \   'lineinfo': '%l\%L [%p%%], %c, %n',
+    \   'lineinfo': '%l\%L [%p%%], %c, %n, %{StatuslineGit()}',
     \   'tagbar': '%{tagbar#currenttag("[%s]", "", "f")}',
     \   'gutentags': '%{gutentags#statusline("[Generating...]")}'
     \ },
@@ -301,3 +324,13 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guibg=magenta
+  elseif a:mode == 'r'
+    hi statusline guibg=blue
+  else
+    hi statusline guibg=red
+  endif
+endfunction
