@@ -7,9 +7,7 @@ set history=100
 set scrolloff=8
 set virtualedit=all
 set number
-set nobackup
 set noswapfile
-set noundofile
 set showcmd
 set showmode
 set wildmenu
@@ -327,13 +325,3 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
-
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi statusline guibg=magenta
-  elseif a:mode == 'r'
-    hi statusline guibg=blue
-  else
-    hi statusline guibg=red
-  endif
-endfunction
