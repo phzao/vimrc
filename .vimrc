@@ -119,7 +119,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jaxbot/github-issues.vim'"
 
 " PHP Support
-Plug 'phpvim/phpcd.vim'
+" Plug 'phpvim/phpcd.vim'
 Plug 'tobyS/pdv'
 
 " Theme / Interface
@@ -403,13 +403,13 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
 " Syntastic Configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
 " "
 " Vim-PDV Configuration 
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
