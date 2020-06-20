@@ -142,7 +142,20 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'colepeters/spacemacs-theme.vim'
 
+" flutter dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+
 call plug#end()
+
+"dart
+let g:lsc_auto_map = v:true
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+"end dart
 
 let g:NERDTreeGlyphReadOnly = "RO"
 let NERDTreeNodeDelimiter = "\t"
