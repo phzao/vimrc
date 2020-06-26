@@ -1,3 +1,4 @@
+set shell=/bin/bash
 colorscheme gruvbox
 syntax on
 set mouse=a
@@ -36,7 +37,7 @@ endfunction
 
 map <silent> <Leader>d <esc>:call UiToggle()<CR>:bd<CR>:call UiToggle()<CR>
 let g:TailMinusF_Center_Win = 1
-set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{fugitive#statusline()}%=\ [%{mode()}%=]\ %{StatuslineGit()}%=\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{FugitiveStatusLine()}%=\ [%{mode()}%=]\ %{StatuslineGit()}%=\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
 
 call plug#begin('~/.vim/plugged')
 
@@ -101,6 +102,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
 
+Plug 'pangloss/vim-javascript'
+
 Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'
 Plug 'benmills/vimux'
@@ -148,6 +151,9 @@ Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
 
 call plug#end()
+
+set langmenu=it_IT.UTF-8
+language messages it_IT.UTF-8
 
 "dart
 let g:lsc_auto_map = v:true
@@ -537,3 +543,39 @@ endif
 
 map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
 noremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+set encoding=UTF-8
+let g:indentLine_setColors = 0
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+
+autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+
+let g:php_namespace_sort_after_insert = 1
+
+"vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
+
+" augroup javascript_folding
+"     au!
+"     au FileType javascript setlocal foldmethod=syntax
+" augroup END
+
+let g:javascript_conceal_arrow_function       = "⇒"
+
+set conceallevel=1
