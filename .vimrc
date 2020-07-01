@@ -576,6 +576,6 @@ let g:javascript_plugin_flow = 1
 "     au FileType javascript setlocal foldmethod=syntax
 " augroup END
 
-let g:javascript_conceal_arrow_function       = "⇒"
+" let g:javascript_conceal_arrow_function       = "⇒"
 
-set conceallevel=1
+" set conceallevel=1
