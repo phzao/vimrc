@@ -70,6 +70,14 @@ or
 sudo snap install universal-ctags
 `````
 
+### Install search on folder [for mac users]
+
+```
+brew install the_silver_searcher
+```
+
+To anothers Linux please go to https://github.com/ggreer/the_silver_searcher for more details.
+
 ## Add alias *optional
 
 If you use oh-my-zsh add to your .zshrc:

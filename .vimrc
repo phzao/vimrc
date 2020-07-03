@@ -63,6 +63,8 @@ Plug 'alvan/vim-closetag'
 
 Plug 'mileszs/ack.vim'
 
+Plug 'dyng/ctrlsf.vim'
+
 Plug 'wellle/targets.vim'
 
 Plug 'Shougo/neocomplete.vim'
