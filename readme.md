@@ -111,7 +111,7 @@ Ctrl + O back from Component/Function/Class to the last cursor
 ```
 
 ```
-gg=G ident all file
+gg=G indent all file
 ```
 
 ```

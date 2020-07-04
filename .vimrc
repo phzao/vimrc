@@ -40,6 +40,8 @@ set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{FugitiveStatusLine()}%=\ [%{m
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'metalelf0/supertab'
 
 Plug 'preservim/nerdtree'
@@ -119,7 +121,6 @@ Plug 'SirVer/ultisnips'
 " Git Support
 Plug 'kablamo/vim-git-log'
 Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
 Plug 'jaxbot/github-issues.vim'"
 
 " PHP Support
@@ -581,4 +582,4 @@ let g:javascript_plugin_flow = 1
 
 " set conceallevel=1
 set shell=/bin/zsh
-
+set nocompatible
