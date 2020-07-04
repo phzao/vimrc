@@ -1,4 +1,3 @@
-set shell=/bin/bash
 colorscheme gruvbox
 syntax on
 set mouse=a
@@ -581,3 +580,5 @@ let g:javascript_plugin_flow = 1
 " let g:javascript_conceal_arrow_function       = "⇒"
 
 " set conceallevel=1
+set shell=/bin/zsh
+

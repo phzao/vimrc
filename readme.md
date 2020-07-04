@@ -99,5 +99,96 @@ don't forget of add on .gitignore the folder:
 tag
 ```
 
+## Shortcuts
+Ctrl + C and...
+
+```
+Ctrl + ] go to Component/Function/Class from the current cursor
+```
+
+```
+Ctrl + O back from Component/Function/Class to the last cursor
+```
+
+```
+gg=G ident all file
+```
+
+```
+/somestring  find string on the files opened
+```
+
+```
+*  over some text or character will go to the next ocurrence
+```
+
+```
+:50 go to line
+```
+
+```
+:1:50d remove/cut content from line 1 until 50
+```
+
+```
+:1:50 co . copy content from line 1 until 50 and paste on current cursor
+```
+
+```
+:vsplit  split vertically
+```
+
+```
+:split  split horizontally
+```
+
+```
+:noh  clear search buffer
+```
+
+```
+:CtrlSF 'sometext' search in current folder/project
+```
+
+```
+w  reached the first character in the next word
+```
+
+```
+b  reached the first character in the previous word
+```
+
+```
+$  reached the end of the line
+```
+
+```
+0  reached the start of the line
+```
+
+```
+I  reached the first character in the line
+```
+
+```
+\cn  comment the current line
+```
+
+```
+5\cn  comments 5 lines from the cursor
+```
+
+```
+\cu  uncomment the current line
+```
+
+```
+5\cu  uncomments 5 lines from the cursor
+```
+
+Creating file/folders on Nerdtree
+
+Set the cursor on the place you want to add/move/remove a file/folder and hit M
+
 
 That's all folks!
