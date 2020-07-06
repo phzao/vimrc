@@ -22,7 +22,7 @@ set hlsearch
 
 let g:loaded_matchit = 1
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 function! GitBranch()
@@ -41,6 +41,8 @@ set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{FugitiveStatusLine()}%=\ [%{m
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'metalelf0/supertab'
 
@@ -276,7 +278,9 @@ let g:ctrlp_use_caching = 0
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " ==== End gutentags settings ====
-"
+
+" Equivalent to the above.
+let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
             \   'php': ['php'],
             \}
@@ -583,3 +587,11 @@ let g:javascript_plugin_flow = 1
 " set conceallevel=1
 set shell=/bin/zsh
 set nocompatible
+
+" resize split window using mouse
+set ttymouse=sgr
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
