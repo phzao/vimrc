@@ -12,6 +12,8 @@ set showcmd
 set showmode
 set wildmenu
 set laststatus=2
+" Enable mouse use in all modes
+set mouse=a
 
 set cmdheight=2
 set ch=2
@@ -21,7 +23,7 @@ set backspace=indent,eol,start
 set hlsearch
 
 let g:loaded_matchit = 1
-set tabstop=4
+set tabstop=2
 set shiftwidth=2
 set expandtab
 
@@ -41,8 +43,6 @@ set stl=%f\ %h\ %m\ %r\ %{rails#statusline()}%=\ %{FugitiveStatusLine()}%=\ [%{m
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
-
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'metalelf0/supertab'
 
@@ -115,6 +115,8 @@ Plug 'benmills/vimux'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'gilsondev/searchtasks.vim'
 Plug 'tpope/vim-dispatch'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install',  'branch': 'release/0.x'  }
 
 Plug 'majutsushi/tagbar'
 Plug 'wesQ3/vim-windowswap'
@@ -278,9 +280,7 @@ let g:ctrlp_use_caching = 0
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " ==== End gutentags settings ====
-
-" Equivalent to the above.
-let g:airline#extensions#ale#enabled = 1
+"
 let g:ale_linters = {
             \   'php': ['php'],
             \}
@@ -588,10 +588,22 @@ let g:javascript_plugin_flow = 1
 set shell=/bin/zsh
 set nocompatible
 
-" resize split window using mouse
-set ttymouse=sgr
 if has("mouse_sgr")
-    set ttymouse=sgr
+	set ttymouse=sgr
 else
     set ttymouse=xterm2
 end
+
+let g:prettier#config#print_width = 80
+let g:prettier#config#tab_width = 2
+let g:prettier#config#parser = 'flow'
+
+let g:closetag_filenames = "*.jsx,*.js"
+let g:closetag_xhtml_filenames = '*.jsx,*.js'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+set stl=%!tpipeline#stl#line()
+let g:tpipeline_split = 1
+let g:tpipeline_cursormoved = 1
